@@ -1,0 +1,16 @@
+<form action ="/sales">
+  <div class="form-group">
+    <% if @items_available.empty?() %>
+      <h1>There are no antiques available.</h1>
+    <% else %>
+      <h1>Here are all antiques in stock:</h1>
+      <label>
+        <% @items_available.each() do |item| %>
+          <input type= 'checkbox' name="item"><%= item.name() %><br>
+        <% end %>
+      </label>
+    <% end %>
+    <br>
+    <button type="submit" class="btn-danger">Buy!</button>
+  </div>
+</form>

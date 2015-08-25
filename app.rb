@@ -11,25 +11,30 @@ get('/') do
   erb(:index)
 end
 
+get('/sales') do
+  @items_available = Item.not_purchased()
+  erb(:sales)
+end
+
 get('/owner') do
   erb(:owner_portal)
 end
 
-get('/items') do
-  @items_available = Item.not_purchased()
-  @items_sold = Item.purchased()
-  erb(:item_list)
-end
+  get('/items') do
+    @items_available = Item.not_purchased()
+    @items_sold = Item.purchased()
+    erb(:item_list)
+  end
 
-post('/items') do
-  item_name = params.fetch('item_name')
-  item_price = params.fetch('item_price')
-  Item.create({:name => item_name, :price => item_price, :purchased => false})
+  post('/items') do
+    item_name = params.fetch('item_name')
+    item_price = params.fetch('item_price')
+    Item.create({:name => item_name, :price => item_price, :purchased => false})
 
-  redirect('/items')
-end
+    redirect('/items')
+  end
 
-get('/purchases') do
-  @purchases = Purchase.all()
-  erb(:purchase_list)
-end
+  get('/purchases') do
+    @purchases = Purchase.all()
+    erb(:purchase_list)
+  end
