@@ -6,6 +6,7 @@ require('./lib/customer')
 require('./lib/item')
 require('./lib/purchase')
 require('pg')
+require('pry')
 
 get('/') do
   erb(:index)
@@ -13,6 +14,17 @@ end
 
 get('/sales') do
   @items_available = Item.not_purchased()
+  @items_to_purchase = []
+  erb(:sales)
+end
+
+post('/sales') do
+  @items_available = Item.not_purchased()
+  @items_to_purchase = []
+  checked_items = params.fetch('names')
+  checked_items.each() do |item|
+    @items_to_purchase.push(Item.find(item))
+  end
   erb(:sales)
 end
 

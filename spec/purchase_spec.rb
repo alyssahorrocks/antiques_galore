@@ -1,6 +1,6 @@
 require('spec_helper')
 
-describe(Purchase)
+describe(Purchase) do
   # describe('.between') do
   #   it('returns total purchases made between a given time-span') do
   #

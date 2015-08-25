@@ -1,12 +1,12 @@
-<form action ="/sales">
+<form action ="/sales" method="post">
   <div class="form-group">
     <% if @items_available.empty?() %>
       <h1>There are no antiques available.</h1>
     <% else %>
-      <h1>Here are all antiques in stock:</h1>
+      <h1>Here are all the antiques in stock:</h1>
       <label>
         <% @items_available.each() do |item| %>
-          <input type= 'checkbox' name="item"><%= item.name() %><br>
+          <input type= 'checkbox' name="names[]" value="<%=item.id()%>"><%= item.name() %><br>
         <% end %>
       </label>
     <% end %>
@@ -14,3 +14,15 @@
     <button type="submit" class="btn-danger">Buy!</button>
   </div>
 </form>
+
+<h1>Items to Purchase:</h1>
+<% if @items_to_purchase.empty?() %>
+  <h3>Your cart is empty!</h3>
+<% else %>
+  <ul>
+    <% @items_to_purchase.each() do |item| %>
+      <li><%= item.name() %></li>
+    <% end %>
+  </ul>
+<% end %>
+<button type="submit" class="btn-danger">Confirm Purchase</button>
