@@ -1,0 +1,31 @@
+<div class="col-sm-6">
+  <% if @items_available.empty?() %>
+    <h1>You dont have any antiques available.</h1>
+  <% else %>
+    <h1>Here are all your antiques in stock:</h1>
+    <ul>
+      <% @items_available.each() do |item| %>
+        <li><%= item.name() %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <form action="/items" method="post">
+    <input type="text" name="item_name" placeholder="Item">
+    <input type="text" name="item_price" placeholder="Price">
+    <button class="btn btn default">Add Item</button>
+  </form>
+</div>
+
+<div class="col-sm-6">
+  <% if @items_sold.empty?() %>
+    <h1>You haven't sold any antiques.</h1>
+  <% else %>
+    <h1>Here are all the antiques sold:</h1>
+    <ul>
+      <% @items_sold.each() do |item| %>
+        <li><%= item.name() %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
