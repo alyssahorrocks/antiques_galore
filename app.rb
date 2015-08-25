@@ -61,3 +61,11 @@ end
     @purchases = Purchase.all()
     erb(:purchase_list)
   end
+
+  post('/purchases') do
+    @purchases = Purchases.all()
+    start_date = params.fetch('start_date')
+    end_date = params.fetch('end_date')
+    @purchases = @purchases.between(start_date, end_date)
+    erb(:purchase_list)
+  end

@@ -1,8 +1,20 @@
-<!-- <h1>Purchase History:</h1>
+<h1>Purchase History:</h1>
 <% if @purchases.empty?() %>
   <h3>You haven't sold a damn thing.</h3>
 <% else %>
   <ul>
-    <li><% @purchases.each() do |purchase| %>
-          <% purchase.customers
-  </ul> -->
+    <% @purchases.each() do |purchase| %>
+      <li><%= Item.find(purchase.item_id()).name() %> | Purchased by <%= Customer.find(purchase.customer_id()).name() %> | on <%= purchase.created_at() %></li>
+      <% end %>
+  </ul>
+<% end %>
+
+<form class="" action="/purchases" method="post">
+  <label for = "start_date">Start Date </label>
+  <input type = "date" id = "start_date" name = "start_date">
+
+  <label for = "end_date">End Date </label>
+  <input type = "date" id = "end_date" name = "end_date">
+
+  <button class="btn-sm btn-danger">Check</button>
+</form>
