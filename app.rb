@@ -28,6 +28,17 @@ post('/sales') do
   erb(:sales)
 end
 
+post('/purchased') do
+  confirmed_items = params.fetch('confirmations')
+  confirmed_purchase = []
+  confirmed_items.each() do |item_number|
+    confirmed_purchase.push(Item.find(item_number))
+  end
+  customer = Customer.create({:name => params.fetch('customer')})
+  customer.buy(confirmed_purchase)
+  erb(:success)
+end
+
 get('/owner') do
   erb(:owner_portal)
 end

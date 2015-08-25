@@ -15,14 +15,21 @@
   </div>
 </form>
 
-<h1>Items to Purchase:</h1>
-<% if @items_to_purchase.empty?() %>
-  <h3>Your cart is empty!</h3>
-<% else %>
-  <ul>
-    <% @items_to_purchase.each() do |item| %>
-      <li><%= item.name() %></li>
-    <% end %>
-  </ul>
-<% end %>
-<button type="submit" class="btn-danger">Confirm Purchase</button>
+<form action="/purchased" method="post">
+  <% if @items_available.empty?() %>
+    <h1>Your cart is empty.</h1>
+  <% else %>
+    <h1>Confirm your items to purchase:</h1>
+    <label>
+      <% @items_to_purchase.each() do |item| %>
+        <input type= 'checkbox' name="confirmations[]" value="<%=item.id()%>"><%= item.name() %><br>
+      <% end %>
+    </label>
+  <% end %>
+    </ul>
+  <br>
+  <input type="text" name="customer" placeholder="Name">
+  <button type="submit" class="btn-danger">Confirm Purchase</button>
+</form>
+
+<a href="/">Back to Homepage</a>
