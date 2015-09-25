@@ -1,24 +1,24 @@
-# _Antique Store Portal_
+# Antique Store Portal
 
-##### _An application to track items and purchases in an antique store, 8/25/15_
+##### An application to track items and purchases in an antique store made while learning Ruby and ActiveRecord {8/25/15}
 
-#### By _**Alyssa Horrocks and Austin Kincaid**_
+#### By **Alyssa Horrocks and Austin Kincaid**
 
 ## Description
 
-_The user has the ability to act as the store owner or as the customer. As the owner, the user can add items and track purchases. As the customer, the user can "purchase" items listed._
+The user has the ability to act as the store owner or as the customer. As the owner, the user can add items and track purchases. As the customer, the user can "purchase" items listed.
 
 ## Setup
 
-* git clone https://github.com/ahorrocks2/antique_store.git
-* rake db:create
-* rake db:schema:load
+* `git clone https://github.com/alyssahorrocks/antiques_galore.git`
+* `rake db:create`
+* `rake db:schema:load`
 
-_This application depends on Ruby version 2.2, Sinatra, and ActiveRecord._
+This application depends on Ruby version 2.2, Sinatra, and ActiveRecord.
 
 ## Technologies Used
 
-_Ruby, Sinatra, HTML/CSS_
+Ruby, Sinatra, HTML/CSS
 
 ### Legal
 
